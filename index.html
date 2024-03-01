@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>System Issue Form</title>
-
-</head>
-<body>
-    <h1>System Issue Report</h1>
+  </head>
+  <body>
+    <h1>PDM Systems Issue Reporting Tool</h1>
     <form id="issueForm">
-        <label for="systemSelect">Select the system you're experiencing issues with:</label>
-        <select id="systemSelect" name="system">
-            <option value="">--Please choose an option--</option>
-            <option value="system1">System 1</option>
-            <option value="system2">System 2</option>
-            <option value="system3">System 3</option>
-            <!-- Add more options as needed -->
-        </select>
-        <!-- We'll add more input fields based on the selection here -->
+      <label for="systemSelect"
+        >Select the system you're experiencing issues with:</label
+      >
+      <select id="systemSelect" name="system">
+        <option value="">--Please choose an option--</option>
+        <option value="system1">Dataguard</option>
+        <option value="system2">Internet Connectivity</option>
+        <option value="system3">Drive/Folder Access</option>
+        <option value="system4">Access Dimensions</option>
+        <option value="system5">User Account</option>
+        <option value="system6">VPN Connection</option>
+
+        <!-- Add more options as needed -->
+      </select>
+      <!-- We'll add more input fields based on the selection here -->
     </form>
     <div id="response"></div>
 
     <script>
-        // JavaScript code will go here
-        document.getElementById('systemSelect').addEventListener('change', function() {
-    var response = document.getElementById('response');
-    response.innerHTML = ''; // Clear previous response
+      // JavaScript code will go here
+      document
+        .getElementById("systemSelect")
+        .addEventListener("change", function () {
+          var response = document.getElementById("response");
+          response.innerHTML = ""; // Clear previous response
 
-    var system = this.value; // Get the selected system's value
+          var system = this.value; // Get the selected system's value
 
-    if(system === 'system1') {
-        // Add dropdown to ask if the issue is preventing the user from working
-        var impactQuestion = document.createElement('div');
-        impactQuestion.innerHTML = `
+          if (system === "system1") {
+            // Add dropdown to ask if the issue is preventing the user from working
+            var impactQuestion = document.createElement("div");
+            impactQuestion.innerHTML = `
             <label for="impactSelect">Is this stopping you from performing your role?</label>
             <select id="impactSelect" name="impact">
                 <option value="">--Please choose an option--</option>
@@ -41,25 +48,28 @@
                 <option value="no">No</option>
             </select>
         `;
-        response.appendChild(impactQuestion);
+            response.appendChild(impactQuestion);
 
-        document.getElementById('impactSelect').addEventListener('change', function() {
-            // Remove previous inputs if any before adding new ones
-            var additionalInfo = document.getElementById('additionalInfo');
-            if (additionalInfo) {
-                additionalInfo.remove();
-            }
+            document
+              .getElementById("impactSelect")
+              .addEventListener("change", function () {
+                // Remove previous inputs if any before adding new ones
+                var additionalInfo = document.getElementById("additionalInfo");
+                if (additionalInfo) {
+                  additionalInfo.remove();
+                }
 
-            var impact = this.value;
-            var detailsDiv = document.createElement('div');
-            detailsDiv.id = 'additionalInfo'; // Assign ID to the new div for future reference
+                var impact = this.value;
+                var detailsDiv = document.createElement("div");
+                detailsDiv.id = "additionalInfo"; // Assign ID to the new div for future reference
 
-            if(impact === 'yes') {
-                // If 'Yes', display contact number
-                detailsDiv.innerHTML = '<p>Please contact us immediately at +1234567890.</p>';
-            } else if(impact === 'no') {
-                // If 'No', display text boxes for name, email, contact number, and a dropdown for department
-                detailsDiv.innerHTML = `
+                if (impact === "yes") {
+                  // If 'Yes', display contact number
+                  detailsDiv.innerHTML =
+                    "<p>Please contact support immediately at +441942 698 333.</p>";
+                } else if (impact === "no") {
+                  // If 'No', display text boxes for name, email, contact number, and a dropdown for department
+                  detailsDiv.innerHTML = `
                     <input type="text" id="name" name="name" placeholder="Your Name"><br>
                     <input type="email" id="email" name="email" placeholder="Your Email"><br>
                     <input type="text" id="contactNumber" name="contactNumber" placeholder="Your Contact Number"><br>
@@ -68,18 +78,73 @@
                         <option value="hr">HR</option>
                         <option value="it">IT</option>
                         <option value="finance">Finance</option>
+                        <option value="production">Production</option>
+                        <option value="qc/qa">QC/QA</option>
+                        <option value="transport">Transport</option>
+                        <option value="commercial">Commercial</option>
                         <!-- Add more departments as needed -->
                     </select>
                 `;
-            }
-            response.appendChild(detailsDiv);
+                }
+                response.appendChild(detailsDiv);
+              });
+          } else if (system === "system2") {
+            response.innerHTML =
+              "<p>Please contact support immediately at +441942 698 333.</p>";
+          } else if (system === "system3") {
+            // Add dropdown to ask if the issue is preventing the user from working
+            var impactQuestion = document.createElement("div");
+            impactQuestion.innerHTML = `
+            <label for="impactSelect">Is this stopping you from performing your role?</label>
+            <select id="impactSelect" name="impact">
+                <option value="">--Please choose an option--</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        `;
+            response.appendChild(impactQuestion);
+
+            document
+              .getElementById("impactSelect")
+              .addEventListener("change", function () {
+                // Remove previous inputs if any before adding new ones
+                var additionalInfo = document.getElementById("additionalInfo");
+                if (additionalInfo) {
+                  additionalInfo.remove();
+                }
+
+                var impact = this.value;
+                var detailsDiv = document.createElement("div");
+                detailsDiv.id = "additionalInfo"; // Assign ID to the new div for future reference
+
+                if (impact === "yes") {
+                  // If 'Yes', display contact number
+                  detailsDiv.innerHTML =
+                    "<p>Please contact support immediately at +441942 698 333.</p>";
+                } else if (impact === "no") {
+                  // If 'No', display text boxes for name, email, contact number, and a dropdown for department
+                  detailsDiv.innerHTML = `
+                    <input type="text" id="name" name="name" placeholder="Your Name"><br>
+                    <input type="email" id="email" name="email" placeholder="Your Email"><br>
+                    <input type="text" id="contactNumber" name="contactNumber" placeholder="Your Contact Number"><br>
+                    <select id="departmentSelect" name="department">
+                        <option value="">Select Your Department</option>
+                        <option value="hr">HR</option>
+                        <option value="it">IT</option>
+                        <option value="finance">Finance</option>
+                        <option value="production">Production</option>
+                        <option value="qc/qa">QC/QA</option>
+                        <option value="transport">Transport</option>
+                        <option value="commercial">Commercial</option>
+                        <!-- Add more departments as needed -->
+                    </select><br>
+                    <input type="text" id="driverequireed" name="driveID" placeholder="Drive Access Required"><br>
+                `;
+                }
+                response.appendChild(detailsDiv);
+              });
+          }
         });
-    } else if(system === 'system2') {
-        response.innerHTML = '<p>You selected System 2. Our team is currently addressing common issues with this system.</p>';
-    } else if(system === 'system3') {
-        response.innerHTML = '<p>You selected System 3. Maintenance is scheduled for this system next week.</p>';
-    }
-});
     </script>
-</body>
+  </body>
 </html>
